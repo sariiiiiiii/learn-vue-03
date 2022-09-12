@@ -1,0 +1,22 @@
+-- 어싱크 어웨이트는자바스크립트 비동기 처리 패턴에 최신 문법
+   Promise와 Callback에서 주는 단점들을 해결(코드의 직관적인 부분들을 해결, 절차적인 코드 해결)
+
+// await 뒤에 붙는 함수는 반듯이 promise를 return해야만 await를 붙일 수 있다
+async function fetchData() {
+    await getUserList();
+}
+
+async function fetchData() {
+    var list = await getUserList();
+    console.log(list)
+}
+
+function getUserList() {
+    return new Promise(function(resolve, reject) {
+        var userList = ['user1', 'user2', 'user3'];
+        resolve(userList);
+    })
+}
+
+fetchData() // ['user1', 'user2', 'user3']
+

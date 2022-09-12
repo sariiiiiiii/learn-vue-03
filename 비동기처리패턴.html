@@ -1,0 +1,64 @@
+// 자바스크립트 비동기처리
+var id = $.get('domain.com/id');
+if (id === 'john') {
+    var products = $.get('domain.com/products')
+}
+
+
+// 자바스크립트의 콜백
+$.get('domain.com/id', function() {
+    if (id === 'john') {
+        $.get('domain.com/products', function(products) {
+            console.log(products)
+        })
+    }
+})
+
+
+function getId() {
+    return new Promise(function(resolve, reject) {
+        $.get('domain.com/id'. function(id) {
+            // 처리            
+            resolve(id)
+        })
+    })
+}
+
+function getProduct() {
+    ....
+}
+
+function logProduct() {
+
+}
+
+// #1
+getId()
+    .then(function(getProduct) {
+        // 처리
+        if (id === 'john') {
+            $.get('domain.com/products', function(products) {
+                console.log(products)
+                return new Promise(...)
+            })
+        }
+    })
+    .then(function(products) {
+        console.log(products)
+    })
+    .catch();
+
+
+    // #2 뭔가 물 흐르듯이 사고할 수 있다
+    getId()
+        .then(getProduct())
+        .then(logProduct())
+        .catch(error => console.log(error))
+
+
+********************************************************************
+var id = $.get('id');
+if(id === 'john') {
+    var products = $.get('products');
+}
+console.log(products);
