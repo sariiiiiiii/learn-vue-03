@@ -1,0 +1,22 @@
+1. (해당 컴포넌트에서 store에 접근하여 데이터 받기)
+created() Userview에서 데이터를 불러옴
+state에 값이 저장되어 있기 때문에 (store)
+UserProfile 컴포넌트에서 computed로 데이터 접근
+UserView -> actions -> api -> actions -> mutations -> state -> UserProfile (데이터를 UserView에서 호출하고 UserProfile에서 받을거냐)
+
+
+2. (props로 데이터 내려받기)
+UserView에서 등록된 UserProfile 컴포넌트 태그에다가 props로 computed 값을 넘겨준후
+UserProfile.vue에서 그 값을 받아 데이터로 사용
+UserView -> actions -> api -> actions -> mutations -> state -> UserView -> UserProfile (데이터를 UserView에서 호출하고 UserView에서 받아 UserProfile로 내려줄거냐)
+
+
+-- 컴포넌트 데이터 흐름처리 2가지에 대해 비교
+위를 비교했을 떄 vuex에 구조의 맞게 코드를 표현하는 것은 호출하고 state는 항상 표현하는 부분에서 땡겨받아 화면에 표현하면 된다
+2번방법으로 사용했을 때는 컴포넌트간에 어떠한 데이터를 연관성이 있는지 컴포넌트 차원에서 이점이 있을 때 사용
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+ItemView의 상세페이지의 유저 정보 영역과 Userview 컴포넌트의 영역이 동일하다
+그걸 slot로 만들어보자
