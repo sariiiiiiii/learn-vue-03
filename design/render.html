@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Render Function</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 인스턴스 영역 -->
+    <!-- 이 구역을 render function -->
+    <!-- <p>{{ message }}</p> -->
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'hello vue'
+      },
+      // template: '<p>{{ message }}</p>',
+      render: function(createElement) { // render function은 기본적으로 createElement를 인자로 받음
+        // return createElement('태그 이름', '태그 속성', '하위 태그 내용');
+        return createElement('p', this.message);
+      }
+    })
+  </script>
+</body>
+</html>
