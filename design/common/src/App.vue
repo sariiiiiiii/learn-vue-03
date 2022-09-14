@@ -10,6 +10,9 @@ import AppHeader from './components/AppHeader.vue';
 import AppContent from './components/AppContent.vue';
 
 export default {
+  created() {
+    console.log(process.env.VUE_APP_TITLE);
+  },
   components: {
     AppHeader,
     AppContent,

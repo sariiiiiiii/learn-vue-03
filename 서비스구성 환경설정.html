@@ -1,0 +1,40 @@
+CLI로 생성한 프로젝트 배포하기
+https://joshua1988.github.io/vue-camp/deploy/intro.html#%E1%84%87%E1%85%A2%E1%84%91%E1%85%A9-%E1%84%86%E1%85%A7%E1%86%BC%E1%84%85%E1%85%A7%E1%86%BC%E1%84%8B%E1%85%A5
+
+-- 배포 명령어
+npm run build
+package.json에 serve, build 실행
+
+해당 폴더 우클릭 후 터미널을 열고 배포 명령어를 적어주면
+dist라는 폴더에 정적 파일들이 생성된다(css, fonts, img, js)
+
+Netify(호스팅 서비스)를 이용한 배포 실습
+https://www.netlify.com/
+1. github과 연결
+2. 빌드하고 싶은 github 주소와 branch도 따로 설정 가능
+3. 빌드 명렁어 npm build run, 폴더 dish 설정
+4. Build Settings에서 dish폴더가 있는 경로로 Base directory와 Publish Directory 설정
+5. setting을 잘 했으면 Trigger deploy를 clear deploy로 바꾸면 다시 실행된다
+6. 로그로 잘 떴으면 위에 preview 버튼 누르면 사이트가 열림
+
+-- SPA 호스팅시에 서버에 추가해줘야 하는 설정
+https://cli.vuejs.org/guide/deployment.html#netlify
+deploy 검색 후 Netlify 카테고리
+
+ex)
+/ask -> 서버에서 알 길이 없음 (why? /ask page에 대한 정보는 브라우저(클라이언트)에 있기 때문)
+그래서 path에 대한 정보를 서버에 알려줘야 될 필요성이 있다
+특정 도메인 뒤에 오는 URL들을 서버마다 설정을 해줘야 한다
+public 폴더에 _redirects 파일 생성 후
+# Netlify settings for single-page application
+/*    /index.html   200
+모든 접근에 대해서 index.html로 돌리겠다라는 redirect 설정(netlify설정)
+서버설정은 꼭 하자!!
+vue cli 사이트 보면 fire-base, amazon S3 등등 
+
+
+-- env 파일
+CLI로 생성한 프로젝트로 개발 및 배포를 진행할 때 .env라는 환경 변수 파일로 옵션들을 편하게 바꿀 수 있다
+
+prefix로 cli 3버전 부터는 VUE_ 를 해주게 되면 따로 설정을 안해줘도 process.env.TEST 요런식으로
+사용할 수가 있다
